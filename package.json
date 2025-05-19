@@ -1,0 +1,25 @@
+{
+  "name": "hoster",
+  "version": "1.0.0",
+  "main": "allow.js",
+  "scripts": {
+    "start": "node allow.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AxmadovSardor/host.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AxmadovSardor/host/issues"
+  },
+  "homepage": "https://github.com/AxmadovSardor/host#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2"
+  }
+}
