@@ -8,7 +8,7 @@ app.use(express.json());
 
 // Proxy GET request
 app.get('/api/leaderboard', async (req, res) => {
-    const token = req.headers.authorization;
+    const token = "zootools-api-token-4b821f5e-afd9-4c1a-a1eb-30bbfb04856c";
 
     try {
         const response = await fetch("https://api.zootools.co/v1/leaderboard?listId=08os7KvUeW8FLH9X3Tz7", {
@@ -25,7 +25,7 @@ app.get('/api/leaderboard', async (req, res) => {
 
 // Proxy POST request
 app.post('/api/contacts', async (req, res) => {
-    const token = req.headers.authorization;
+    const token = "zootools-api-token-4b821f5e-afd9-4c1a-a1eb-30bbfb04856c";
 
     try {
         const response = await fetch("https://api.zootools.co/v1/contacts", {
