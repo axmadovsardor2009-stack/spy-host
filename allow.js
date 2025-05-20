@@ -7,20 +7,22 @@ app.use(cors());
 app.use(express.json());
 
 // Proxy GET request
-app.get('/api/leaderboard', async (req, res) => {
-    const token = req.headers.authorization;
+app.get("/api/leaderboard", async (req, res) => {
+  try {
+    const response = await fetch("https://api.zootools.co/v1/leaderboard?listId=08os7KvUeW8FLH9X3Tz7", {
+      method: "GET",
+      headers: {
+        "Authorization": req.headers["authorization"]
+      }
+    });
 
-    try {
-        const response = await fetch("https://api.zootools.co/v1/leaderboard?listId=08os7KvUeW8FLH9X3Tz7", {
-            method: "GET",
-            headers: { Authorization: token }
-        });
+    const data = await response.json();
 
-        const data = await response.json();
-        res.json(data);
-    } catch (err) {
-        res.status(500).json({ error: "Fetch failed" });
-    }
+    res.status(response.status).json(data);
+  } catch (error) {
+    console.error("Fetch error:", error);
+    res.status(500).json({ error: error.message || "Unknown error" });
+  }
 });
 
 // Proxy POST request
