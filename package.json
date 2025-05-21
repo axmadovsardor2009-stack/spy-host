@@ -1,9 +1,10 @@
 {
   "name": "hoster",
   "version": "1.0.0",
-  "main": "allow.js",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node allow.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +22,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "mongoose": "^8.15.0",
     "node-fetch": "^3.3.2"
   }
 }
