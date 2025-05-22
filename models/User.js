@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   point: {type: Number, default: 0, required: true},
   gender: {type: String, required: true},
   day: {type: Number, default: 0, required: true},
+  rank: {type: String, default: "E"}
 });
 
 export default mongoose.model('User', userSchema);
