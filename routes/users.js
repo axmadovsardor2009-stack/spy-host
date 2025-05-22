@@ -9,6 +9,21 @@ router.get('/', async (req, res) => {
   res.json(users);
 });
 
+
+router.get('/search', async (req, res) => {
+  try {
+    const email = req.query.email;
+    console.log('Searching for email:', email);
+    const user = await User.findOne({ email });
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    res.json(user);
+  } catch (err) {
+    console.error('Error occurred while searching for user:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 // GET user by ID
 router.get('/:id', async (req, res) => {
   try {
@@ -47,19 +62,6 @@ router.delete('/:id', async (req, res) => {
     const deleted = await User.findByIdAndDelete(req.params.id);
     res.json(deleted);
   } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-router.get('/search', async (req, res) => {
-  try {
-    const email = req.query.email;
-    console.log('Searching for email:', email);
-    const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ message: 'User not found' });
-    res.json(user);
-  } catch (err) {
-    console.error('Error occurred while searching for user:', err);
     res.status(500).json({ error: err.message });
   }
 });
