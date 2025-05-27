@@ -9,6 +9,11 @@ router.get('/', async (req, res) => {
   res.json(users);
 });
 
+router.get('/leaderboard', async (req, res) => {
+  const users = await User.find().sort({ point: -1 });
+  res.json(users);
+});
+
 
 router.get('/search', async (req, res) => {
   try {
