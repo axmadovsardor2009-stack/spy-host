@@ -2,6 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors'; // CORS ni import qilamiz
 import usersRouter from './routes/users.js';
+import mashqRouter from './routes/mashqlar.js';
+
 
 const app = express();
 
@@ -25,6 +27,7 @@ mongoose.connect('mongodb+srv://Sardor:Dib7TNuFWp3w@cluster0.sh84pqh.mongodb.net
 
 // Route
 app.use('/users', usersRouter);
+app.use('/mashq', mashqRouter);
 
 // Port
 const PORT = process.env.PORT || 3000;
