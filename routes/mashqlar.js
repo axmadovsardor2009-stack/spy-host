@@ -22,6 +22,7 @@ router.put('/:iday', async (req, res) => {
   try {
     const iday = req.query.iday
     const mashq = await Mashq.findOne({ iday });
+    console.log(mashq)
     const updated = await Mashq.findByIdAndUpdate(mashq._id, req.body, { new: true });
     res.json(updated);
   } catch (err) {
