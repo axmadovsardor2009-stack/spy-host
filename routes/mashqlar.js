@@ -22,7 +22,7 @@ router.put('/:iday', async (req, res) => {
   try {
     const iday = req.query.iday
     const mashq = await Mashq.findOne({ iday });
-    const updated = await Mashq.findByIdAndUpdate(mashq.id, req.body, { new: true });
+    const updated = await Mashq.findByIdAndUpdate(mashq._id, req.body, { new: true });
     res.json(updated);
   } catch (err) {
     res.status(400).json({ error: err.message });
