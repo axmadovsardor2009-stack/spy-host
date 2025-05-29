@@ -1,7 +1,6 @@
 import express from 'express';
 const router = express.Router();
 import Mashq from '../models/mashq.js';
-import mashq from '../models/mashq.js';
 
 router.get('/', async (req, res) => {
   const mashq = await Mashq.find();
@@ -21,7 +20,7 @@ router.post('/', async (req, res) => {
 router.get('/search', async (req, res) => {
   try {
     const iday = req.query.iday;
-    const user = await Mashq.findOne({ "iday" : iday });
+    const user = await Mashq.findOne({ id : iday });
     if (!user) return res.status(404).json({ message: 'Mashq not found' });
     res.json(user);
   } catch (err) {
