@@ -7,5 +7,23 @@ router.get('/', async (req, res) => {
   res.json(mashq);
 });
 
+router.post('/', async (req, res) => {
+  const mashq = new Mashq(req.body);
+  try {
+    const savedMashq = await mashq.save();
+    res.status(201).json(savedMashq);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+router.put('/:iday', async (req, res) => {
+  try {
+    const updated = await User.findByIdAndUpdate(req.params.iday, req.body, { new: true });
+    res.json(updated);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
 
 export default router;
