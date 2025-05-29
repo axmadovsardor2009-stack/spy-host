@@ -17,9 +17,9 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:iday', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
-    const updated = await User.findByIdAndUpdate(req.params.iday, req.body, { new: true });
+    const updated = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(updated);
   } catch (err) {
     res.status(400).json({ error: err.message });
