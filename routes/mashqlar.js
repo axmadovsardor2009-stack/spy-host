@@ -20,24 +20,11 @@ router.post('/', async (req, res) => {
 router.get('/search', async (req, res) => {
   try {
     const iday = req.query.iday;
-    const mashq = await Mashq.findOne({ id : iday });
-    if (!user) return res.status(404).json({ message: 'Exercise not found' });
-    res.json(mashq);
+    const user = await Mashq.findOne({ id : iday });
+    if (!user) return res.status(404).json({ message: 'Mashq not found' });
+    res.json(user);
   } catch (err) {
-    console.error('Error occurred while searching for exercise:', err);
-    res.status(500).json({ error: err.message });
-  }
-});
-
-router.put('/update', async (req, res) => {
-  try {
-    const iday = req.query.iday;
-    const mashq = await Mashq.findOne({ id : iday });
-    const newmashq = await Mashq.findByIdAndUpdate(mashq._id, req.body, { new: true });
-    if (!user) return res.status(404).json({ message: 'Exercise not found' });
-    res.json(newmashq);
-  } catch (err) {
-    console.error('Error occurred while searching for exercise:', err);
+    console.error('Error occurred while searching for user:', err);
     res.status(500).json({ error: err.message });
   }
 });
