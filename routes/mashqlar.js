@@ -18,15 +18,15 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.get('/search', async (req, res) => {
   try {
-    const idy = req.query.id
-    const mashq = await Mashq.findOne({ iday: idy });
-    console.log(mashq)
-    
-    res.json(mashq);
+    const iday = req.query.iday;
+    const user = await Mashq.findOne({ iday });
+    if (!user) return res.status(404).json({ message: 'Mashq not found' });
+    res.json(user);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    console.error('Error occurred while searching for user:', err);
+    res.status(500).json({ error: err.message });
   }
 });
 
