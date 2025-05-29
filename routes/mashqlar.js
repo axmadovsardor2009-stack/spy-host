@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
 router.get('/search', async (req, res) => {
   try {
     const iday = req.query.iday;
-    const user = await Mashq.findOne({ id : iday });
+    const user = await Mashq.findOne({ iday });
     if (!user) return res.status(404).json({ message: 'Mashq not found' });
     res.json(user);
   } catch (err) {
@@ -32,7 +32,7 @@ router.get('/search', async (req, res) => {
 router.put('/update', async (req, res) => {
   try {
     const iday = req.query.iday;
-    const user = await Mashq.findOne({ id : iday });
+    const user = await Mashq.findOne({ iday });
     if (!user) return res.status(404).json({ message: 'Mashq not found' });
     const updated = await Mashq.findByIdAndUpdate(user._id, req.body, { new: true });
     res.json(updated);
