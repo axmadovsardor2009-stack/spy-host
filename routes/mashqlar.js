@@ -29,4 +29,17 @@ router.get('/search', async (req, res) => {
   }
 });
 
+router.put('/update', async (req, res) => {
+  try {
+    const iday = req.query.iday;
+    const user = await Mashq.findOne({ id : iday });
+    if (!user) return res.status(404).json({ message: 'Mashq not found' });
+    const updated = await Mashq.findByIdAndUpdate(user._id, req.body, { new: true });
+    res.json(updated);
+  } catch (err) {
+    console.error('Error occurred while searching for user:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 export default router;
