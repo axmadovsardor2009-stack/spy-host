@@ -21,6 +21,18 @@ router.get('/search', async (req, res) => {
   try {
     const iday = req.query.iday;
     const mashq = await Mashq.findOne({ id : iday });
+    if (!user) return res.status(404).json({ message: 'Exercise not found' });
+    res.json(mashq);
+  } catch (err) {
+    console.error('Error occurred while searching for exercise:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.put('/update', async (req, res) => {
+  try {
+    const iday = req.query.iday;
+    const mashq = await Mashq.findOne({ id : iday });
     const newmashq = await Mashq.findByIdAndUpdate(mashq._id, req.body, { new: true });
     if (!user) return res.status(404).json({ message: 'Exercise not found' });
     res.json(newmashq);
