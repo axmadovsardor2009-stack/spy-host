@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
 
 router.put('/:idi', async (req, res) => {
   try {
-    const iday = req.query.iday
+    const idi = req.query.iday
     const mashq = await Mashq.findOne({ iday: idi });
     console.log(mashq)
     const updated = await Mashq.findByIdAndUpdate(mashq._id, req.body, { new: true });
