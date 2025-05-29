@@ -18,9 +18,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:iday', async (req, res) => {
   try {
-    const updated = await Mashq.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const iday = req.query.iday
+    const mashq = await Mashq.findOne({ iday });
+    const updated = await Mashq.findByIdAndUpdate(mashq.id, req.body, { new: true });
     res.json(updated);
   } catch (err) {
     res.status(400).json({ error: err.message });

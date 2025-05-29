@@ -18,7 +18,6 @@ router.get('/leaderboard', async (req, res) => {
 router.get('/search', async (req, res) => {
   try {
     const email = req.query.email;
-    console.log('Searching for email:', email);
     const user = await User.findOne({ email });
     if (!user) return res.status(404).json({ message: 'User not found' });
     res.json(user);
