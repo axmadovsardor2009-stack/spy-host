@@ -13,6 +13,12 @@ app.use(cors({
   credentials: true // agar cookie, token yuborilsa kerak bo‘lsa
 }));
 
+app.use(cors({
+  origin: 'http://localhost:5173/', // frontend manzilingiz
+  credentials: true // agar cookie, token yuborilsa kerak bo‘lsa
+}));
+
+
 app.use(express.json());
 
 // MongoDB ulanishi
