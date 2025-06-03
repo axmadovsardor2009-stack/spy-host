@@ -14,7 +14,7 @@ app.use(cors({
 }));
 
 app.use(cors({
-  origin: 'http://localhost:5173/', // frontend manzilingiz
+  origin: 'http://localhost:5173', // frontend manzilingiz
   credentials: true // agar cookie, token yuborilsa kerak bo‘lsa
 }));
 
