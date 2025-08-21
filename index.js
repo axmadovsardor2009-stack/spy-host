@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors'; // CORS ni import qilamiz
 import usersRouter from './routes/users.js';
-import mashqRouter from './routes/mashqlar.js';
+import mashqRouter from './routes/games.js';
 
 
 const app = express();
@@ -22,7 +22,8 @@ app.use(cors({
 app.use(express.json());
 
 // MongoDB ulanishi
-mongoose.connect('mongodb+srv://Sardor:Dib7TNuFWp3w@cluster0.sh84pqh.mongodb.net/', {
+mongoose.connect('mongodb+srv://axmadovsardor2009:8fRGgIjcbz5p313o@cluster0.op1c36u.mongodb.net/', {
+  
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
@@ -33,7 +34,7 @@ mongoose.connect('mongodb+srv://Sardor:Dib7TNuFWp3w@cluster0.sh84pqh.mongodb.net
 
 // Route
 app.use('/users', usersRouter);
-app.use('/mashq', mashqRouter);
+app.use('/game', mashqRouter);
 
 // Port
 const PORT = process.env.PORT || 3000;
