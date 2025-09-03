@@ -8,15 +8,17 @@ import mashqRouter from './routes/games.js';
 const app = express();
 
 // CORS uchun ruxsat (frontend domeningizni shu yerga yozing)
-app.use(cors({
-  origin: 'https://solo-workout.netlify.app', // frontend manzilingiz
-  credentials: true // agar cookie, token yuborilsa kerak bo‘lsa
-}));
+const allowedDomains = ['http://localhost:5173', 'render.com'];
 
-app.use(cors({
-  origin: 'http://localhost:5173', // frontend manzilingiz
-  credentials: true // agar cookie, token yuborilsa kerak bo‘lsa
-}));
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedDomains.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
 
 
 app.use(express.json());
