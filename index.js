@@ -9,7 +9,7 @@ const app = express();
 // ✅ Only frontend domains go here
 const allowedDomains = [
   'http://localhost:5173',
-  'https://spy-green.vercel.app/'
+  'https://secret-spy.vercel.app/'
 ];
 
 const corsOptions = {
