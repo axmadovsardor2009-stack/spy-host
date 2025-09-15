@@ -9,7 +9,7 @@ const app = express();
 // ✅ Only frontend domains go here
 const allowedDomains = [
   'http://localhost:5173',
-  'https://secret-spy.netlify.app/'
+  'https://secret-spy.netlify.app'
 ];
 
 const corsOptions = {
